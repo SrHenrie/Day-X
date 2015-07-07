@@ -9,5 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 @interface ListTableViewDataSource : NSObject <UITableViewDataSource>
+@property (strong)NSArray *entries;
+
+
 
 @end

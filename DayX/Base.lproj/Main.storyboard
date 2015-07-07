@@ -53,11 +53,15 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="dataSource" destination="sie-gg-IHx" id="hbU-Ly-Tga"/>
+                        <outlet property="tableView" destination="9FQ-io-nT6" id="Q0C-c5-XLv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
                 <customObject id="sie-gg-IHx" customClass="ListTableViewDataSource"/>
             </objects>
-            <point key="canvasLocation" x="885" y="-489"/>
+            <point key="canvasLocation" x="887" y="-467"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="pIh-9A-ats">
@@ -79,6 +83,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
+                                    <action selector="textFieldChanged:" destination="bVE-ot-HAH" eventType="editingChanged" id="jxG-om-Zfa"/>
                                     <outlet property="delegate" destination="bVE-ot-HAH" id="RHR-9p-wqn"/>
                                 </connections>
                             </textField>
@@ -120,7 +125,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Plv-cZ-BmO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1569" y="-489"/>
+            <point key="canvasLocation" x="1573" y="-467"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bSW-TT-rBJ">
@@ -142,6 +147,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ytJ-dn-Vru"/>
+        <segue reference="zKI-0K-AuV"/>
     </inferredMetricsTieBreakers>
 </document>

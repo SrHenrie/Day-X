@@ -18,8 +18,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.textField.text=self.entry.title;
+    self.textView.text = self.entry.entryText;
 }
+
+- (IBAction)textFieldChanged:(id)sender {
+    self.entry.title = self.textField.text;
+    
+}
+
+
 - (bool)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
     
