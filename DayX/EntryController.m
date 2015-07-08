@@ -8,6 +8,8 @@
 
 #import "EntryController.h"
 
+static NSString * const AllEntriesKey = @"allEntries";
+
 @interface EntryController ()
 
 #pragma mark - Read
@@ -35,7 +37,7 @@
     Entry *entry = [Entry new];
     entry.title = title;
     entry.bodyText = bodyText;
-    entry.timestamp = [NSDate date];
+    entry.timeStamp = [NSDate date];
     
     [self addEntry:entry];
     
@@ -52,7 +54,30 @@
     
     self.entries = mutableEntries;
 }
+-(void)saveToPersistentStorage {
+    NSMutableArray *entryDictionaries = [NSMutableArray new];
+    for (Entry *entry in self.entries) {
+        [entryDictionaries addObject:[entry dictionaryRepresentation]];
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:entryDictionaries forKey:AllEntriesKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+-(void)loadFromPersistentStorage{
+    NSArray *entryDictionaries = [[NSUserDefaults standardUserDefaults]objectForKey:AllEntriesKey];
+    
+    NSMutableArray *entries = [NSMutableArray new];
+    for (NSDictionary *entry in entryDictionaries){
+        [entries addObject:[[Entry alloc] initWithDictionary:entry]];
+    }
+    self.entries = entries;
+}
 
+
+
+
+-(void)save{
+    [self saveToPersistentStorage];
+}
 #pragma mark - Delete
 
 - (void)removeEntry:(Entry *)entry {
@@ -65,5 +90,7 @@
     
     self.entries = mutableEntries;
 }
+
+
 
 @end

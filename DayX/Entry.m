@@ -10,6 +10,22 @@
 
 @implementation Entry
 
+-(id)initWithDictionary:(NSDictionary *)dictionary{
+    self = [super init];
+    if (self) {
+        self.title = dictionary[TitleKey];
+        self.bodyText = dictionary[BodyTextKey];
+        self.timeStamp = dictionary[TimeStampKey];
+    }
+    return self;
+}
 
-
+-(NSDictionary *)dictionaryRepresentation{
+    NSDictionary *dictionary= @{
+                                TitleKey: self.title,
+                                BodyTextKey: self.bodyText,
+                                TimeStampKey: self.timeStamp,
+                                };
+return dictionary;
+}
 @end
