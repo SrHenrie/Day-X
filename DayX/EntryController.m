@@ -26,7 +26,8 @@ static NSString * const AllEntriesKey = @"allEntries";
     dispatch_once(&onceToken, ^{
         sharedInstance = [EntryController new];
         
-        sharedInstance.entries = [NSArray new];
+        [sharedInstance loadFromPersistentStorage];
+        
     });
     return sharedInstance;
 }
@@ -53,6 +54,7 @@ static NSString * const AllEntriesKey = @"allEntries";
     [mutableEntries addObject:entry];
     
     self.entries = mutableEntries;
+    [self saveToPersistentStorage];
 }
 -(void)saveToPersistentStorage {
     NSMutableArray *entryDictionaries = [NSMutableArray new];
@@ -89,6 +91,7 @@ static NSString * const AllEntriesKey = @"allEntries";
     [mutableEntries removeObject:entry];
     
     self.entries = mutableEntries;
+    [self saveToPersistentStorage];
 }
 
 
